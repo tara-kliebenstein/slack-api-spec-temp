@@ -1,0 +1,45 @@
+openapi: 3.0.3
+info:
+  title: Slack chat.postMessage (minimal)
+  version: "1.0.0"
+servers:
+  - url: https://slack.com/api
+paths:
+  /chat.postMessage:
+    post:
+      operationId: postMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                channel:
+                  type: string
+                text:
+                  type: string
+                thread_ts:
+                  type: string
+                unfurl_links:
+                  type: boolean
+                unfurl_media:
+                  type: boolean
+              required:
+                - channel
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                  ts:
+                    type: string
+                  channel:
+                    type: string
+                  error:
+                    type: string
